@@ -4,33 +4,34 @@
         position: relative
         width: 750px
         margin: 0 auto
-    .slick-prev, .slick-next
+    .prev, .next
         position: absolute
         top: 50%
         transform: translateY(-50%)
-        left: -66px
+        left: -45px
         border: none
         background: #fff
         img
             width: 31px
             height: 50px
-    .slick-next
-        right: -66px
+    .next
+        right: -45px
         left: auto
-    .slick-dots
-        list-style-type: none
-        display: flex
+    .tns-nav
+        display: none
         justify-content: center
         align-items: center
-        padding-inline-start: 0
         button
             border-radius: 100%
             width: 15px
             height: 15px
             border: none
-            font-size: 0
-        li
             margin-left: 10px
-    .slick-active
-        button
+        &-active
             background: grey
+    .tns-item
+        img
+            display: block
+            margin: 0 auto
+    .tns-outer
+        width: 100%

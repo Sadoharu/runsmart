@@ -1,3 +1,13 @@
+@media (max-width: 1040px)
+    .carusel
+        .tns-outer
+            width: 90%
+            margin: 0 auto
+        .next
+            right: -20px
+        .prev
+            left: -20px
+
 @media (max-width: 992px)
     .container
         width: 707px
@@ -5,6 +15,17 @@
         &_left
             font-size: 30px
             line-height: 35px
+    .carusel
+        .tns-nav
+            display: flex
+        &__inner
+            width: 100%
+            img
+                width: 100%
+        .next, .prev
+            display: none
+        .tns-outer
+            width: 100%
 @media (max-width: 768px)
     .container
         width: 707px
@@ -43,11 +64,7 @@
             width: 216px
     .container
         width: 695px
-    .carusel
-        &__inner
-            width: 100%
-            img
-                width: 100%
+
 @media (max-width: 704px)
     .container
         width: 552px
