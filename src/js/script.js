@@ -1,36 +1,60 @@
-// $(document).ready(function(){
-//     $('.carusel__inner').slick(
-//         {
-//             speed: 1200,
-//             // adaptiveHeight: true,
-//             prevArrow: '<button type="button" class="slick-prev"><img src="icons/red_left.png"></button>',
-//             nextArrow: '<button type="button" class="slick-next"><img src="icons/red_right.png"></button>',
-//             responsive: [
-//                 {
-//                     breakpoint: 992,
-//                     settings: {
-//                       arrows: false,
-//                       dots: true
-//                     }
-//                 }
-//             ]
-
-//           }
-//     );
-//   });
-  
+window.addEventListener('DOMContentLoaded', () => {
+	
 const slider = tns({
-  container: '.carusel__inner',
-  items: 1,
-  slideBy: 'page',
-  autoplay: false,
-  controls: false,
-  navPosition: 'bottom'
+	container: '.carusel__inner',
+	items: 1,
+	slideBy: 'page',
+	autoplay: false,
+	controls: false,
+	navPosition: 'bottom'
 });
 
 document.querySelector('.prev').addEventListener('click', function () {
-  slider.goTo('prev');
+	slider.goTo('prev');
 });
 document.querySelector('.next').addEventListener('click', function () {
-  slider.goTo('next');
+	slider.goTo('next');
+});
+
+
+const tab = document.querySelectorAll('.catalog__tab'),
+			catalogContent = document.querySelectorAll('.catalog__content'),
+			catalogItemLink = document.querySelectorAll('.catalog-item__link'),
+			catalogItemPrev = document.querySelectorAll('.catalog-item__prev');
+			
+
+tab.forEach(item => {
+		item.addEventListener('click', e => {
+			tab.forEach(tabs => tabs.classList.remove('catalog__tab_active'));
+			catalogContent.forEach(tabs => tabs.classList.remove('catalog__content_active'));
+
+			e.currentTarget.classList.add('catalog__tab_active');
+			for (let i = 0; i < catalogContent.length; i++) {
+				if ( (i+1) == e.currentTarget.getAttribute('data-tab') ) {
+					catalogContent[i].classList.add('catalog__content_active');
+				}
+			}			
+		});
+});
+
+catalogItemPrev.forEach(item => {
+item.addEventListener('click', e => {
+	e.preventDefault();
+	e.currentTarget.parentNode.classList.remove('catalog-item__list_active');
+	e.currentTarget.parentNode.previousSibling.previousSibling.classList.add('catalog-item__content_active');
+
+
+});
+});
+
+catalogItemLink.forEach(item => {
+	item.addEventListener('click', e => {
+		e.preventDefault();
+		e.currentTarget.parentNode.nextSibling.nextSibling.classList.add('catalog-item__list_active');
+		e.currentTarget.parentNode.classList.remove('catalog-item__content_active');
+
+	
+	});
+	});
+
 });
