@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		overlay = document.querySelector('.overlay'),
 		modalOverlay = document.querySelector('.overlay form'),
 		modalThanks = document.querySelector('#thanks');
-	console.log(modalOverlay);
+	  
 
 	buttonConsultation.forEach(item => {
 		item.addEventListener('click', e => {
@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			modalThanks.parentNode.style.visibility = 'visible';
 			modalThanks.parentNode.style.opacity = '100%';
 			modalTimerId();
-			fetch('http://localhost:4000/requests', {
+			fetch('mailer/smart.php', {
 				method: 'POST',
 				headers: {
 					//Опечатки зло
@@ -169,9 +169,18 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	
+//up
+const buttonUp = document.querySelector('.pageup');
+addEventListener('scroll', (e)=>{
 
-
-
+	if (window.pageYOffset > 1200) {
+		buttonUp.style.visibility = 'visible';
+		buttonUp.style.opacity = '100%';
+	} else if (window.pageYOffset < 1200) {
+		buttonUp.style.visibility = 'hidden';
+		buttonUp.style.opacity = '0';
+	}
+});
 
 
 
